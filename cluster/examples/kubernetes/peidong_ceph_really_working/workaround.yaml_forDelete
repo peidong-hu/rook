@@ -1,0 +1,28 @@
+---
+kind: DaemonSet
+apiVersion: extensions/v1beta1
+metadata:
+  namespace: rook-ceph-system
+  name: rook-workaround-1501
+  labels:
+    app: rook-workaround-1501
+spec:
+  selector:
+    matchLabels:
+      app: rook-workaround-1501
+  template:
+    metadata:
+      labels:
+        app: rook-workaround-1501
+    spec:
+      containers:
+      - name: rook-workaround-1501
+        image: rook/ceph:v0.9.0
+        command: ['bash', '-c', 'set -e; while true; do cd /flexmnt; for d in * ; do if [ -d "$d" ] && [[ "$d" == *"rook"* ]]; then touch "$d"; fi; done; sleep 300; done;']
+        volumeMounts:
+        - name: flexvolume
+          mountPath: /flexmnt
+      volumes:
+      - name: flexvolume
+        hostPath:
+          path: /var/lib/kubelet/volume-plugins

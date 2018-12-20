@@ -1,0 +1,7 @@
+steps,
+1) create operator, make sure the flex volume dir is set in operator.yaml
+2) create cluster,
+3) create block storage class
+4) kubectl exec into the mon pod to increase the pg_num and pgp_num
+5) deploy mysql in examples to try
+
