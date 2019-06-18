@@ -3,5 +3,14 @@ steps,
 2) create cluster,
 3) create block storage class
 4) kubectl exec into the mon pod to increase the pg_num and pgp_num
+5) kubectl expose deployment rook-ceph-mgr-a  --type=NodePort --name=rook-ceph-mgr-node-port -n rook-ceph
+6) ceph osd pool create replicapool 2048
+7) ceph osd pool set replicapool pg_num 4096
+8) ceph osd pool set replicapool pgp_num 4096
+9) deploy toolbox to run above command
+10) enable pool application, ceph osd pool application enable replicapool rbd
+11) ceph health detail
 5) deploy mysql in examples to try
 
+To destroy,
+follow the teardown step on goolge
