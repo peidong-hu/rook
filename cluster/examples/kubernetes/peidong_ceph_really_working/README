@@ -11,6 +11,7 @@ steps,
 9) deploy toolbox to run above command
 10) enable pool application, ceph osd pool application enable replicapool rbd
 11) ceph health detail
+12) on each host, add options = nodiscard in /etc/mkfs2.conf
 5) deploy mysql in examples to try
 
 To destroy,
