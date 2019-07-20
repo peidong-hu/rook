@@ -8,6 +8,7 @@ steps,
 7) ceph osd pool set replicapool pg_num 4096
 8) ceph osd pool set replicapool pgp_num 4096
 8) ceph osd crush tunables optimal
+8-1) ceph osd pool set replicapool min_size 2
 9) deploy toolbox to run above command
 10) enable pool application, ceph osd pool application enable replicapool rbd
 11) ceph health detail
